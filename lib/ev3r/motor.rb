@@ -9,6 +9,11 @@ module EV3r
      run 0
    end
 
+   def break
+      r = estop
+      estop r
+   end
+
    def initialize(port)
       @dev = nil
       device_path = "/sys/bus/legoev3/devices"

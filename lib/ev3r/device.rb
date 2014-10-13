@@ -1,5 +1,7 @@
 module EV3r
 class Device
+   attr :dev_path
+
   def initialize(dev_path)
      @dev_path = dev_path
   end
