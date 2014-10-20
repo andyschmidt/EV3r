@@ -13,10 +13,16 @@ module EV3r
       r = estop
       estop r
    end
+   
+   def running?
+      return false if state =~ /idle/i
+      return true
+   end
 
    def initialize(port)
       @dev = nil
       device_path = "/sys/bus/legoev3/devices"
+      device_path = "/sys/devices/platform/legoev3-ports"
       motor_path = File.join device_path, "out#{port.to_s.upcase}"
       Dir.glob("#{motor_path}/**/tacho-motor*").each do |tm|
         @dev = tm if tm =~ /tacho-motor\d/ 

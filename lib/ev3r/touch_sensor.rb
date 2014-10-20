@@ -4,6 +4,7 @@ module EV3r
 #      /sys/bus/legoev3/devices/in4:ev3-analog-sensor/msensor/sensor1
 
 def touched?
+   x = value0
    value0 == "1"
 end
 

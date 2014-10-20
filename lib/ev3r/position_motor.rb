@@ -14,13 +14,14 @@ module EV3r
    def initialize(port)
       super port
 
-      run_mode :position
       position 0
+      run_mode :position
+      #position 0
       stop_mode :brake
 #      hold_mode :on
       regulation_mode :on
-#      ramp_up_sp 1000
-#     ramp_down_sp 1000
+      ramp_up_sp 300
+     ramp_down_sp 300
 
    end
    
