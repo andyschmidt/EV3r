@@ -21,12 +21,16 @@ module EV3r
 
    def initialize(port)
       @dev = nil
-      device_path = "/sys/bus/legoev3/devices"
-      device_path = "/sys/devices/platform/legoev3-ports"
-      motor_path = File.join device_path, "out#{port.to_s.upcase}"
-      Dir.glob("#{motor_path}/**/tacho-motor*").each do |tm|
-        @dev = tm if tm =~ /tacho-motor\d/ 
+      device_path = "/sys/bus/lego/devices"
+#      device_path = "/sys/devices/platform/legoev3-ports"
+      motor_path = File.join device_path, "out#{port.to_s.upcase}:ev3-tacho-moto"
+      #Dir.glob("#{motor_path}/**/tacho-motor*").each do |tm|
+      Dir.glob("#{device_path}/**/out#{port.to_s.upcase}*").each do |tm|
+        Dir.glob("#{tm}/tacho-motor/motor*").each do |mpath|
+          puts "* Found motor #{mpath}"
+        @dev = mpath 
       end
+end
       super @dev
 
    end

@@ -1,5 +1,5 @@
 module EV3r
-   class TouchSensor < Device
+   class TouchSensor < Sensor
 
 #      /sys/bus/legoev3/devices/in4:ev3-analog-sensor/msensor/sensor1
 
@@ -9,14 +9,8 @@ def touched?
 end
 
    def initialize(port)
-      @dev = nil
-      device_path = "/sys/bus/legoev3/devices"
-      sensor_path = File.join device_path, "in#{port.to_s}"
-      Dir.glob("#{sensor_path}*/msensor/*").each do |tm|
-        @dev = tm if tm =~ /sensor\d/ 
-      end
       
-      super @dev
+      super port, 'lego-ev3-touch'
 
    end
    

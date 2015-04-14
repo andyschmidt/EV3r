@@ -4,8 +4,9 @@ end
 
 require 'ev3r'
 
-s = EV3r::TouchSensor.new 3
-10.times do 
-puts s.touched?
-sleep 1
+s = EV3r::SonicIRProx.new 1
+d = 1
+while d > 0 
+  d = s.distance
+  puts d
 end
