@@ -9,7 +9,13 @@ Most of the development is done with the jessie-image.
 The bindings may run on other images too ... maybe. 
 
 #Use the base classes
+These base classes are ready to use:
+* Motor
+* Sensor
+
 ##Create a position motor class
+The following code shows how to write a PositionMotor class:
+
 
 ```ruby
 module EV3r
@@ -28,9 +34,7 @@ module EV3r
 
       position 0
       run_mode :position
-      #position 0
       stop_mode :brake
-      #      hold_mode :on
       regulation_mode :on
       ramp_up_sp 300
       ramp_down_sp 300

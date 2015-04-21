@@ -25,7 +25,8 @@ module EV3r
     end
 
     private
-
+    
+   
     def presets(settings)
       settings.each do |s,v|
         self.send(s, v) unless v.nil?
